@@ -1,29 +1,35 @@
+# eRemote Server by Celeratec
+# https://github.com/Celeratec/eremote-server
+# Based on RustDesk Server
+
 version: '3'
 
 networks:
-  rustdesk-net:
+  eremote-net:
     external: false
 
 services:
   hbbs:
-    container_name: hbbs
+    container_name: eremote-hbbs
     ports:
       - 21115:21115
       - 21116:21116
       - 21116:21116/udp
       - 21118:21118
     image: rustdesk/rustdesk-server:latest
-    command: hbbs -r rustdesk.example.com:21117
+    # TODO: Replace YOUR_SERVER_IP_OR_DOMAIN with your actual server IP or domain
+    # Example: command: hbbs -r remote.celeratec.com:21117
+    command: hbbs -r YOUR_SERVER_IP_OR_DOMAIN:21117
     volumes:
       - ./data:/root
     networks:
-      - rustdesk-net
+      - eremote-net
     depends_on:
       - hbbr
     restart: unless-stopped
 
   hbbr:
-    container_name: hbbr
+    container_name: eremote-hbbr
     ports:
       - 21117:21117
       - 21119:21119
@@ -32,5 +38,5 @@ services:
     volumes:
       - ./data:/root
     networks:
-      - rustdesk-net
+      - eremote-net
     restart: unless-stopped
