@@ -54,7 +54,7 @@ cat data/id_ed25519.pub
 
 ### Step 3: Configure Clients
 
-Download RustDesk client from https://github.com/rustdesk/rustdesk/releases
+Download eRemote client from https://github.com/Celeratec/eRemote/releases (or use the standard RustDesk client from https://github.com/rustdesk/rustdesk/releases)
 
 Configure each client with:
 1. **ID Server**: `your-server-ip:21116`
@@ -144,7 +144,7 @@ flutter build ios --release
 
 ## ScreenConnect Feature Comparison
 
-| Feature | ScreenConnect | RustDesk OSS | Notes |
+| Feature | ScreenConnect | eRemote | Notes |
 |---------|--------------|--------------|-------|
 | Remote Desktop | ✅ | ✅ | Full support |
 | File Transfer | ✅ | ✅ | Full support |
@@ -220,8 +220,8 @@ If you need enterprise features without building them yourself:
 
 1. [ ] Deploy eRemote server with Docker Compose
 2. [ ] Configure firewall rules (ports 21115-21119)
-3. [ ] Test with default RustDesk client pointing to your server
-4. [ ] Fork rustdesk/rustdesk client repo as `eremote-client`
+3. [ ] Test with eRemote client pointing to your server
+4. [ ] Build eRemote client from https://github.com/Celeratec/eRemote
 5. [ ] Apply eRemote branding (name, icons, default server)
 6. [ ] Build branded clients for Windows, macOS, Linux, Android, iOS
 7. [ ] Create deployment scripts/GPO for client installation

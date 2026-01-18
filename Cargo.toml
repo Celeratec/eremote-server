@@ -1,7 +1,8 @@
 [package]
 name = "hbbs"
 version = "1.1.15"
-authors = ["rustdesk <info@rustdesk.com>"]
+authors = ["Celeratec <support@celeratec.com>"]
+description = "eRemote Server - Self-hosted remote desktop infrastructure by Celeratec"
 edition = "2021"
 build = "build.rs"
 default-run = "hbbs"
@@ -11,7 +12,7 @@ name = "hbbr"
 path = "src/hbbr.rs"
 
 [[bin]]
-name = "rustdesk-utils"
+name = "eremote-utils"
 path = "src/utils.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -54,7 +55,7 @@ ping = "0.4.0"
 flate2 = "1.0"
 
 [target.'cfg(any(target_os = "macos", target_os = "windows"))'.dependencies]
-# https://github.com/rustdesk/rustdesk-server-pro/issues/189, using native-tls for better tls support
+# Using native-tls for better TLS support on macOS/Windows
 reqwest = { git = "https://github.com/rustdesk-org/reqwest", features = ["blocking", "socks", "json", "native-tls", "gzip"], default-features=false }
 
 [target.'cfg(not(any(target_os = "macos", target_os = "windows")))'.dependencies]

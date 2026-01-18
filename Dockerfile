@@ -19,6 +19,9 @@ COPY src ./src
 COPY libs ./libs
 COPY build.rs ./
 
+# Set DATABASE_URL for sqlx compile-time query checking
+ENV DATABASE_URL="sqlite:///build/db_v2.sqlite3?mode=rwc"
+
 # Build release binaries
 RUN cargo build --release
 
@@ -35,7 +38,7 @@ RUN apt-get update && apt-get install -y \
 # Copy binaries from builder
 COPY --from=builder /build/target/release/hbbs /usr/bin/hbbs
 COPY --from=builder /build/target/release/hbbr /usr/bin/hbbr
-COPY --from=builder /build/target/release/rustdesk-utils /usr/bin/rustdesk-utils
+COPY --from=builder /build/target/release/eremote-utils /usr/bin/eremote-utils
 
 # Set working directory for data
 WORKDIR /data
