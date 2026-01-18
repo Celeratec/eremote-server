@@ -66,9 +66,12 @@ jobs:
             # Create docker network if it doesn't exist
             docker network create eremote-net 2>/dev/null || true
             
-            # Stop and remove existing containers
+            # Stop and remove existing containers (force)
             docker stop eremote-hbbr eremote-hbbs 2>/dev/null || true
-            docker rm eremote-hbbr eremote-hbbs 2>/dev/null || true
+            docker rm -f eremote-hbbr eremote-hbbs 2>/dev/null || true
+            
+            # Wait for ports to be released
+            sleep 2
             
             # Start hbbr (relay server)
             docker run -d \
