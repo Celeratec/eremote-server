@@ -19,8 +19,8 @@ COPY src ./src
 COPY libs ./libs
 COPY build.rs ./
 
-# Set DATABASE_URL for sqlx compile-time query checking
-ENV DATABASE_URL="sqlite:///build/db_v2.sqlite3?mode=rwc"
+# Skip sqlx compile-time query verification (queries validated at runtime)
+ENV SQLX_OFFLINE=true
 
 # Build release binaries
 RUN cargo build --release
